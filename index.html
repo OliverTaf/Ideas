@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Informationssikkerhedsplan – SUND</title>
 <style>
-:root{--bg:#f6f6f3;--fg:#1d1d1b;--mut:#66665f;--card:#fff;--bd:#d9d9d1;--ac:#1f5f8b;--gr:#c6efce;--grt:#006100;--ye:#ffeb9c;--yet:#7d4a00;--re:#ffc7ce;--ret:#9c0006;--na:#e3e3de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161718;--fg:#ececea;--mut:#9a9a93;--card:#1f2022;--bd:#38393b;--ac:#6fb3e0;--gr:#1e4a28;--grt:#a8e6b4;--ye:#4d3f12;--yet:#ffe08a;--re:#5a2027;--ret:#ffb3ba;--na:#333}}
-:root[data-theme="dark"]{--bg:#161718;--fg:#ececea;--mut:#9a9a93;--card:#1f2022;--bd:#38393b;--ac:#6fb3e0;--gr:#1e4a28;--grt:#a8e6b4;--ye:#4d3f12;--yet:#ffe08a;--re:#5a2027;--ret:#ffb3ba;--na:#333}
+:root{--bg:#f6f6f3;--fg:#1d1d1d;--mut:#666666;--card:#fff;--bd:#d9d9d1;--ac:#901A1E;--lk:#901A1E;--gr:#c6efce;--grt:#006100;--ye:#ffeb9c;--yet:#7d4a00;--re:#ffc7ce;--ret:#9c0006;--na:#e3e3de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161718;--fg:#ececea;--mut:#9a9a93;--card:#1f2022;--bd:#38393b;--ac:#C73028;--lk:#EDCFD4;--na:#333}}
+:root[data-theme="dark"]{--bg:#161718;--fg:#ececea;--mut:#9a9a93;--card:#1f2022;--bd:#38393b;--ac:#C73028;--lk:#EDCFD4;--na:#333}
 *{box-sizing:border-box}html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 #app{display:flex;min-height:100%}
@@ -33,7 +33,7 @@ textarea{min-height:46px;resize:vertical;min-width:180px}input[type=checkbox]{wi
 .cons{font-weight:700;font-size:16px;text-align:center}
 .mx td.v{text-align:center;font-weight:600;min-width:64px;cursor:pointer;padding:0}
 .mx td.v button{all:unset;display:block;width:100%;padding:6px 4px;cursor:pointer}
-.g{background:var(--gr);color:var(--grt)}.y{background:var(--ye);color:var(--yet)}.r{background:var(--re);color:var(--ret)}.na{background:var(--na);color:var(--mut)}
+.g{background:#B0CABE;color:#244C3A}.y{background:#EDCFD4;color:#A5000C}.r{background:#C73028;color:#fff}.na{background:var(--na);color:var(--mut)}
 .mx th.c{min-width:110px;max-width:150px;font-weight:500}
 .mx td.s,.mx th.s{position:sticky;left:0;background:var(--card);z-index:1;min-width:230px}
 .pill{display:inline-block;padding:2px 10px;border-radius:99px;font-weight:600;margin-right:6px}
@@ -43,7 +43,7 @@ textarea{min-height:46px;resize:vertical;min-width:180px}input[type=checkbox]{wi
 label.f{display:block;font-weight:600;margin-bottom:4px}
 .empty{padding:18px;color:var(--mut)}
 .guide{max-width:900px}.guide h3{margin-top:18px}.guide p{white-space:pre-wrap;margin:4px 0}
-a{color:var(--ac)}dialog{width:min(720px,92vw);background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:10px}
+a{color:var(--lk)}dialog{width:min(720px,92vw);background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:10px}
 @media(max-width:800px){#app{display:block}nav{width:auto;display:flex;overflow-x:auto;gap:4px;border-right:0;border-bottom:1px solid var(--bd)}nav h1,nav .sm{display:none}nav button{white-space:nowrap;width:auto}main{padding:14px 12px 50px}}
 @media print{nav{display:none}.tw{overflow:visible}th{position:static}main{padding:0}}
 </style>
@@ -121,7 +121,7 @@ return `<h2>7. Risikohåndtering</h2>${tips('7')}`+sec('r','Røde risici fra ris
 function rFb(){const Q=[['Feedback til skabelonen','Hvad var henholdsvis nemt og svært at udfylde i skabelonen?'],['Svære ting ved arbejdet med informationssikkerhed','Hvilke 2-3 ting er mest udfordrende ved at arbejde med informationssikkerhed?'],['Andre kommentarer','Øvrige kommentarer']];
 return `<h2>8. Feedback</h2>${tips('8')}<div style="max-width:800px">${Q.map(([a,b],i)=>`<h3>${a}</h3><label class="f">${b}</label>${ta('fb.'+i,S.fb[i]).replace('<textarea','<textarea style="min-height:110px"')}`).join('')}</div>`}
 const VIEWS={'0':rGuide,'1':rInfo,'2a':()=>rTypes('dig'),'2b':()=>rTypes('fys'),'3a':()=>rClass('dig'),'3b':()=>rClass('fys'),'4a':()=>rThreat('dig'),'4b':()=>rThreat('fys'),'5a':()=>rRisk('dig'),'5b':()=>rRisk('fys'),'6':rComp,'7':rHandl,'8':rFb};
-function render(){const y=scrollY;$('#nav').innerHTML=`<h1>Informationssikkerhedsplan<br><span class="sm2">SUND – skabelon 2026</span></h1>`+TABS.map(([k,t])=>`<button class="${S.tab===k?'on':''}" data-tab="${k}">${esc(t)}</button>`).join('')+`<div class="sm"><button data-act="io">Gem / indlæs data</button><button data-act="print">Udskriv</button><button data-act="reset">Nulstil alt</button></div>`;
+function render(){const y=scrollY;$('#nav').innerHTML=`<h1>Informationssikkerhedsplan<br><span class="sm2">SUND – skabelon 2022</span></h1>`+TABS.map(([k,t])=>`<button class="${S.tab===k?'on':''}" data-tab="${k}">${esc(t)}</button>`).join('')+`<div class="sm"><button data-act="io">Gem / indlæs data</button><button data-act="print">Udskriv</button><button data-act="reset">Nulstil alt</button></div>`;
 $('#main').innerHTML=VIEWS[S.tab]();scrollTo(0,y)}
 function $(s){return document.querySelector(s)}
 document.addEventListener('input',e=>{const t=e.target,p=t.dataset.p;if(p&&t.tagName!=='SELECT'&&t.type!=='checkbox')setP(p,t.value)});
